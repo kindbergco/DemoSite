@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@(Model.Value<string>("seoTitle"))</title> 
+<meta name="Description" content="@(Model.Value<string>("seoDescription"))" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700,900" rel="stylesheet">
+    <link href="/DependencyHandler.axd?s=L2Nzcy9BcnRpY2xlLUxpc3QuY3NzOy9jc3MvQ2Fyb3VzZWwtSGVyby5jc3M7L2Nzcy9Gb290ZXItQmFzaWMuY3NzOy9jc3MvTmF2aWdhdGlvbi1DbGVhbjEuY3NzOy9jc3MvTmV3cy1DYXJkcy5jc3M7L2Nzcy9zdHlsZXMuY3NzOw&amp;t=Css&amp;cdv=506516143" type="text/css" rel="stylesheet"/>
+<style type="text/css">
+body * {
+	font-family: 'Roboto';
+	font-weight: 500;
+}
+</style>
+</head>
+<body>
+    @Html.Partial("/Views/Partials/Navigation/TopNavigation.cshtml")
+    @Html.Partial("/Views/Partials/TopBanner.cshtml")
+
+    <div class="article-clean">
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("/Views/Partials/Navigation/Footer.cshtml")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/DependencyHandler.axd?s=L3NjcmlwdHMvbmF2aWdhdGlvbk1lbnUuanM7&amp;t=Javascript&amp;cdv=506516143" type="text/javascript"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10364813-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-10364813-4');
+    </script>
+
+</body>
+</html>

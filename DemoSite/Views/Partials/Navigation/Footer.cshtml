@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web;
+@{ 
+    var root = Model.Root();
+}
+<div class="footer-basic">
+    <footer class="container">
+        @(Html.Raw(root.Value<string>("footerContent")))
+    </footer>
+</div>

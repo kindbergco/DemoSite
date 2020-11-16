@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web;
+@{ 
+    var root = Model.Root();
+    var logo = root.Value<IPublishedContent>("logo");
+}
+<div style="margin-top:70px;"></div>
+<nav class="navbar navbar-default navbar-fixed-top navigation-clean">
+    <div class="container">
+        <div class="navbar-header">
+            @{ 
+                if (logo != null)
+                {
+                    @:<a class="navbar-brand" href="@root.Url()"><img src="@logo.Url" alt="Logo" title="Logo" style="position:absolute; height:55px; top:7px;"></a>
+                }
+            }
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li role="presentation">
+                    <a href="@root.Url()">@root.Name</a>
+                </li>
+                @{ 
+                    foreach(var subPage in root.Children)
+                    {
+                        <text>
+                        <li>
+                            <a href="@subPage.Url()">@subPage.Name</a>
+                        </li>
+                        </text>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

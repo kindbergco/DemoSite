@@ -1,0 +1,52 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using Umbraco.Web;
+@{
+    var items = Model.Value<IEnumerable<IPublishedElement>>("topBanner");
+    if (items == null || items.Count() == 0)
+    {
+        return;
+    }
+}
+<div class="carousel slide" data-ride="carousel" id="mainCarousel" style="height:400px;">
+    <div class="carousel-inner" role="listbox">
+        @{
+            bool isFirst = true;
+            foreach (var item in items)
+            {
+                <text>
+                    <div class="item @(isFirst ? "active" : "")">
+                        <div class="jumbotron carousel-hero" style="background-image:url('@(item.Value<IPublishedContent>("image").Url())'); background-size:cover; height:400px;">
+                            <h2 class="hero-title">@(item.Value<string>("topBannerTitle"))</h2>
+                            <p class="hero-subtitle">@(item.Value<string>("topBannerSubTitle"))</p>
+                        </div>
+                    </div>
+                </text>
+                isFirst = false;
+            }
+        }
+
+    </div>
+    @{
+        if (items.Count() > 1)
+        {
+        <text>
+        <div>
+            <a class="left carousel-control" href="#mainCarousel" role="button" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
+            <a class="right carousel-control" href="#mainCarousel" role="button" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
+        </div>
+        <ol class="carousel-indicators">
+            @{
+                for (int x = 0; x < items.Count(); x++)
+                {
+                    {
+                        <text>
+                            <li data-target="#mainCarousel" data-slide-to="@x" @(x==0 ? Html.Raw("class=\"active\"") : Html.Raw(""))></li>
+                        </text>
+                        }
+                    }
+                }
+            </ol>
+         </text>
+        }
+    }
+</div>
