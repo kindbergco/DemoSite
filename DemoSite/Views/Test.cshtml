@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = null;
+}
+<p>Textbox @(Model.Value<string>("textbox"))</p>
+<p>Numeric @(Model.Value<int>("nummeric").ToString())</p>
+<p>Email @(Model.Value<string>("email"))</p>
+<p>Content Picker: @(Model.Value<IPublishedContent>("contentPicker").Url())</p>
+<p>Checkbox @(Model.Value<bool>("checkbox").ToString())</p>
+<p>Slider @(Model.Value<int>("slider").ToString())</p>
+<p>
+    Repeatable strings: <br />
+    @{
+        var strings = Model.Value<string[]>("repeatableStrings");
+        foreach (var str in strings)
+        {
+            @:@str <br /> 
+        }
+    }
+</p>
+<p>Member picker: @(Model.Value<IPublishedContent>("memberPicker").Value<string>("username"))</p>

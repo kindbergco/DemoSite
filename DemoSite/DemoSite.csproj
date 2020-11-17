@@ -2854,6 +2854,7 @@
     <Content Include="Views\GridPage.cshtml" />
     <Content Include="Views\MacroPartials\Login.cshtml" />
     <Content Include="Views\Partials\Login.cshtml" />
+    <Content Include="Views\Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
