@@ -13,10 +13,10 @@ namespace DemoSite.Models
         [Required(), DataType(DataType.Password)]
         public string Password { get; set; }
         
-        [Required(), MinLength(5)]
+        [Required(), MinLength(5), DisplayName("Full name")]
         public string Name { get; set; }
         
         [Required(), MinLength(5)]
-        public string CustomField { get; set; }
+        public string InterestedIn { get; set; }
     }
 }

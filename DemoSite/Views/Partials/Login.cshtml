@@ -1,0 +1,32 @@
+﻿@model DemoSite.Models.LoginModel
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{ 
+}
+@{
+    if (TempData["error"] != null)
+    {
+        @:<h1>@(TempData["error"])</h1>
+    }
+}
+@using (Html.BeginUmbracoForm<DemoSite.Controllers.Surface.MembershipSurfaceController>
+    ("Login", FormMethod.Post))
+{
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.LabelFor(model => model.Username)<br />
+                @Html.TextBoxFor(model => model.Username, new { placeholder = "Username (email)" })
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+            <div class="col-lg-12" style="margin-top:20px;">
+                @Html.LabelFor(model => model.Password)<br />
+                @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="col-lg-12" style="margin-top:20px; margin-bottom:40px;">
+                <button type="submit">Submit</button>
+            </div>
+            @Html.HiddenFor(model => model.MyAccountPage)
+        </div>
+    </div>
+}

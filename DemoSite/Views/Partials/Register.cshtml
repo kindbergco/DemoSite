@@ -1,7 +1,12 @@
 ﻿@model DemoSite.Models.RegisterModel
 @using ContentModels = Umbraco.Web.PublishedModels;
 
-
+@{ 
+    if (TempData["error"] != null)
+    {
+        @:<h1>@(TempData["error"])</h1>
+    }
+}
 @using (Html.BeginUmbracoForm<DemoSite.Controllers.Surface.MembershipSurfaceController>("Register", FormMethod.Post))
 {
 <div class="wrapper">
@@ -18,13 +23,13 @@
         </div>
         <div class="col-lg-12" style="margin-top:20px;">
             @Html.LabelFor(model => model.Password)<br />
-            @Html.TextBoxFor(model => model.Password, new { placeholder = "Password" })
+            @Html.PasswordFor(model => model.Password, new { placeholder = "Password" })
             @Html.ValidationMessageFor(model => model.Password)
         </div>
         <div class="col-lg-12" style="margin-top:20px;">
-            @Html.LabelFor(model => model.CustomField)<br />
-            @Html.TextBoxFor(model => model.CustomField, new { placeholder = "name@company.com" })
-            @Html.ValidationMessageFor(model => model.CustomField)
+            @Html.LabelFor(model => model.InterestedIn)<br />
+            @Html.TextBoxFor(model => model.InterestedIn, new { placeholder = "A few hobbies of yours" })
+            @Html.ValidationMessageFor(model => model.InterestedIn)
         </div>
         <div class="col-lg-12" style="margin-top:20px; margin-bottom:40px;">
             <button type="submit">Submit</button>

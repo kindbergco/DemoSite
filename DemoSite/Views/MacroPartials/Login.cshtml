@@ -1,1 +1,17 @@
 ﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+    @{
+        if (Members.IsLoggedIn())
+        {
+            var user = Members.GetByUsername(Members.CurrentUserName);
+            @:You are already logged in as @user.Name
+            return;
+        }
+        var root = Model.Content.Root();
+        var myAccountPage = root.Value<IPublishedContent>("myAccountPage");
+        var nodeId = root.Id;
+        if (myAccountPage != null)
+        {
+            nodeId = myAccountPage.Id;
+        }
+    }
+@Html.Partial("/views/partials/Login.cshtml", new DemoSite.Models.LoginModel() { MyAccountPage = nodeId })

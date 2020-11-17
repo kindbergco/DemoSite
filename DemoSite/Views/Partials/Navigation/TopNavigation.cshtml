@@ -3,6 +3,9 @@
 @{ 
     var root = Model.Root();
     var logo = root.Value<IPublishedContent>("logo");
+    var myAccountPage = root.Value<IPublishedContent>("myAccountPage");
+    var loginPage = root.Value<IPublishedContent>("loginPage");
+    var registrationUrl = root.Value<IPublishedContent>("registrationPage");
 }
 <div style="margin-top:70px;"></div>
 <nav class="navbar navbar-default navbar-fixed-top navigation-clean">
@@ -21,14 +24,38 @@
                 <li role="presentation">
                     <a href="@root.Url()">@root.Name</a>
                 </li>
-                @{ 
-                    foreach(var subPage in root.Children)
+                @{
+                    foreach (var subPage in root.Children)
+                    {
+                        if (! subPage.Value<bool>("visibleInMenu")) { continue; }
+                        <text>
+                            <li>
+                                <a href="@subPage.Url()">@subPage.Name</a>
+                            </li>
+                        </text>
+                    }
+                }
+                @{
+                    if (Members.IsLoggedIn())
                     {
                         <text>
-                        <li>
-                            <a href="@subPage.Url()">@subPage.Name</a>
-                        </li>
+                            <li>
+                                <a href="@myAccountPage.Url()">My Account</a>
+                            </li>
+                            <li>
+                                <a href="/umbraco/surface/MembershipSurface/Logout/">Log out</a>
+                            </li>
+
                         </text>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@registrationUrl.Url()">Register</a>
+                        </li>
+                        <li>
+                            <a href="@loginPage.Url()">Log In</a>
+                        </li>
                     }
                 }
             </ul>

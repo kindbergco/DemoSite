@@ -8,6 +8,9 @@ using System.Web.Mvc;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Umbraco.Core.Models;
+using Umbraco.Web.Models;
+using Umbraco.Core;
 
 namespace DemoSite.Controllers.Surface
 {
@@ -27,58 +30,74 @@ namespace DemoSite.Controllers.Surface
             {
                 return CurrentUmbracoPage();
             }
-            var registerModel = Members.CreateRegistrationModel("testUser");
-            registerModel.Email = "peter@kindbergco.se";
-            registerModel.Password = "test123456";
-            registerModel.Name = "Peter Kindberg";
+            var registerModel = Members.CreateRegistrationModel("test");
+            registerModel.Email = model.Email;
+            registerModel.Password = model.Password;
+            registerModel.Name = model.Name;
             registerModel.UsernameIsEmail = true;
-            registerModel.Username = "peter";
-            registerModel.MemberProperties.Add(new Umbraco.Web.Models.UmbracoProperty() { Alias = "custom", Name = "custom", Value = "My custom var" });
-            StringBuilder sb = new StringBuilder();
-            foreach (var item in registerModel.MemberProperties)
-            {
-                sb.Append(item.Alias.ToString() + " - " + item.Name + " - " + item.Value);
-            }
+
+            registerModel.MemberProperties.Add(new Umbraco.Web.Models.UmbracoProperty() { Alias = "interestedIn", Name = "interestedIn", Value = model.InterestedIn });
+
+            // How we register the member
             Members.RegisterMember(registerModel, out System.Web.Security.MembershipCreateStatus status);
 
-            return Content(sb.ToString() + status.ToString());
+            if (status == System.Web.Security.MembershipCreateStatus.Success)
+            {
+                return Redirect("/myAccount");
+            } else
+            {
+                TempData["error"] = status;
+                return CurrentUmbracoPage();
+            }
         }
 
         [HttpPost]
         public ActionResult Login(Models.LoginModel model)
         {
-            //_memberService.
-            if (Members.Login("peter@kindbergco.se", "test123456"))
+            if (!ModelState.IsValid)
             {
-                return Content("Success");
+                return CurrentUmbracoPage();
+            }
+            //_memberService.
+
+            if (Members.Login(model.Username, model.Password))
+            {
+                if (model.MyAccountPage > 0) {
+                    return RedirectToUmbracoPage(model.MyAccountPage);
+                }
+                return Redirect("/");
             }
             else
             {
                 #region Överkurs
-                var user = Members.GetByEmail("peter@kindbergco.se");
+                var user = Members.GetByEmail(model.Username);
                 if (user == null)
                 {
-                    // User was not found
+                    TempData["error"] = "User does not exist";
+                    return CurrentUmbracoPage();
                 }
                 else
                 {
                     if (!user.Value<bool>("umbracoMemberApproved"))
                     {
-                        // User is not approved
+                        TempData["error"] = "We are reviewing your profile, and will let you know when your account is approved.";
+                        return CurrentUmbracoPage();
                     }
                     else if (user.Value<bool>("umbracoMemberLockedOut"))
                     {
-                        // User is locked out for too many failed login attempts
+                        TempData["error"] = "Account is temporarily locked";
+                        return CurrentUmbracoPage();
                     }
                 }
                 #endregion
-                return Content("Fail");
+                TempData["error"] = "Username and password did not match";
+                return CurrentUmbracoPage();
             }
         }
         public ActionResult Logout()
         {
             Members.Logout();
-            return Content("Logged out");
+            return Redirect("/");
         }
     }
 }

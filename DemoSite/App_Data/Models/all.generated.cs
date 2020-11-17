@@ -6,8 +6,8 @@ using  Umbraco.Core.Models;
 using  Umbraco.Core.Models.PublishedContent;
 using  Umbraco.Web;
 using  Umbraco.ModelsBuilder.Embedded;
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "12c3e6d8f5b46152")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "e12d12296408fb74")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -76,11 +76,32 @@ namespace Umbraco.Web.PublishedModels
 		public global::Newtonsoft.Json.Linq.JToken Grid => this.Value<global::Newtonsoft.Json.Linq.JToken>("grid");
 
 		///<summary>
+		/// LoginPage
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("loginPage")]
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent LoginPage => this.Value<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>("loginPage");
+
+		///<summary>
 		/// Logo
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		[ImplementPropertyType("logo")]
 		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent Logo => this.Value<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>("logo");
+
+		///<summary>
+		/// My Account Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("myAccountPage")]
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MyAccountPage => this.Value<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>("myAccountPage");
+
+		///<summary>
+		/// Registration page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("registrationPage")]
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent RegistrationPage => this.Value<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>("registrationPage");
 
 		///<summary>
 		/// Top Banner
@@ -102,6 +123,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		[ImplementPropertyType("seoTitle")]
 		public string SeoTitle => global::Umbraco.Web.PublishedModels.SEO.GetSeoTitle(this);
+
+		///<summary>
+		/// Visible In Menu
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("visibleInMenu")]
+		public bool VisibleInMenu => global::Umbraco.Web.PublishedModels.SEO.GetVisibleInMenu(this);
 	}
 
 	/// <summary>Grid page</summary>
@@ -156,6 +184,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		[ImplementPropertyType("seoTitle")]
 		public string SeoTitle => global::Umbraco.Web.PublishedModels.SEO.GetSeoTitle(this);
+
+		///<summary>
+		/// Visible In Menu
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("visibleInMenu")]
+		public bool VisibleInMenu => global::Umbraco.Web.PublishedModels.SEO.GetVisibleInMenu(this);
 	}
 
 	/// <summary>Topbanner</summary>
@@ -262,6 +297,10 @@ namespace Umbraco.Web.PublishedModels
 		/// <summary>Title</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		string SeoTitle { get; }
+
+		/// <summary>Visible In Menu</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		bool VisibleInMenu { get; }
 	}
 
 	/// <summary>SEO</summary>
@@ -310,6 +349,17 @@ namespace Umbraco.Web.PublishedModels
 		/// <summary>Static getter for Title</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		public static string GetSeoTitle(ISEO that) => that.Value<string>("seoTitle");
+
+		///<summary>
+		/// Visible In Menu
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("visibleInMenu")]
+		public bool VisibleInMenu => GetVisibleInMenu(this);
+
+		/// <summary>Static getter for Visible In Menu</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		public static bool GetVisibleInMenu(ISEO that) => that.Value<bool>("visibleInMenu");
 	}
 
 	/// <summary>RegistrationPage</summary>
@@ -364,6 +414,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		[ImplementPropertyType("seoTitle")]
 		public string SeoTitle => global::Umbraco.Web.PublishedModels.SEO.GetSeoTitle(this);
+
+		///<summary>
+		/// Visible In Menu
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("visibleInMenu")]
+		public bool VisibleInMenu => global::Umbraco.Web.PublishedModels.SEO.GetVisibleInMenu(this);
 	}
 
 	/// <summary>Folder</summary>
@@ -589,7 +646,7 @@ namespace Umbraco.Web.PublishedModels
 		public global::System.DateTime UmbracoMemberPasswordRetrievalQuestion => this.Value<global::System.DateTime>("umbracoMemberPasswordRetrievalQuestion");
 	}
 
-	/// <summary>Test</summary>
+	/// <summary>Test User</summary>
 	[PublishedModel("test")]
 	public partial class Test : PublishedContentModel
 	{
