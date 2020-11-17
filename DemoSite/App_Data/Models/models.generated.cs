@@ -17,8 +17,8 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "74c050765df2f0ec")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "fbfc7eb342ab028d")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 namespace Umbraco.Web.PublishedModels
 {
@@ -745,6 +745,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
 		[ImplementPropertyType("interestedIn")]
 		public string InterestedIn => this.Value<string>("interestedIn");
+
+		///<summary>
+		/// profilePicture
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.1")]
+		[ImplementPropertyType("profilePicture")]
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent ProfilePicture => this.Value<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>("profilePicture");
 
 		///<summary>
 		/// Is Approved

@@ -1,0 +1,20 @@
+﻿{
+  "gridEditors": [
+    {
+      "name": "Code",
+      "alias": "kindbergco.code",
+      "view": "/app_plugins/kindbergco.Code/views/editor.html",
+      "icon": "icon-code",
+      "config": {
+        "color": "black",
+        "width": "100%",
+        "height": "50px"
+
+      },
+      "render": "~/app_plugins/kindbergco.Code/views/renderer.cshtml"
+    }
+  ],
+  "javascript": [
+    "~/app_plugins/kindbergco.Code/Controller/controller.js"
+  ]
+}

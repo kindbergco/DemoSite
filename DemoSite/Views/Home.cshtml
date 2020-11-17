@@ -4,3 +4,15 @@
     Layout = "Master.cshtml";
 }
 @Html.GetGridHtml(Model, "grid", "bootstrap3-fluid")
+@{ 
+    var user = Members.GetByUsername(Members.CurrentUserName);
+    if (Members.IsLoggedIn())
+    {
+        var picture = user.Value<IPublishedContent>("profilePicture");
+        
+        if (picture != null)
+        {
+            @:<img src="@picture.Url()" />
+        }
+    }
+}
