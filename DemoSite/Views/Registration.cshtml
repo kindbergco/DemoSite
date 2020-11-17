@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+Layout = "Master.cshtml";
+}
+@Html.GetGridHtml(Model, "grid", "bootstrap3-fluid")
+@Html.Partial("/views/Partials/Register.cshtml", new DemoSite.Models.RegisterModel())

@@ -2722,6 +2722,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Surface\MembershipSurfaceController.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2845,6 +2848,10 @@
     <Content Include="Umbraco\Views\Default.cshtml" />
     <Content Include="Umbraco\Views\Preview\Index.cshtml" />
     <Content Include="Umbraco\Views\web.config" />
+    <Content Include="Views\Login.cshtml" />
+    <Content Include="Views\Partials\Register.cshtml" />
+    <Content Include="Views\Registration.cshtml" />
+    <Content Include="Views\GridPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
