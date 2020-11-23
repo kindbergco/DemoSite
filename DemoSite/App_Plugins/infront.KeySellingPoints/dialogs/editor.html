@@ -1,0 +1,152 @@
+<div class="umb-panel" ng-controller="infront.KeySellingPoints.EditorController">
+        <umb-editor-header name="model.title"
+                           name-locked="true"
+                           hide-alias="true"
+                           hide-icon="true"
+                           hide-description="false">
+        </umb-editor-header>
+
+        <umb-editor-view style="overflow:scroll;">
+            <umb-box>
+                <umb-box-header title="Important info"></umb-box-header>
+                <umb-box-content>
+                    <strong>Control is intended for a 100% width container only! This container should have the class set to "usp". {{}}</strong>
+                </umb-box-content>
+            </umb-box>
+            <umb-box>
+                <umb-box-header title="KSP 1"></umb-box-header>
+                <umb-box-content>
+                    <umb-control-group label="KSP 1 Icon">
+                        <div class="row">
+                            <div class="previewBackground" id="previewKsp1Icon" ng-click="openMediaPicker(1)" ng-if="!model.editorData.previewKsp1Icon">+</div>
+                            <div class="previewBackgroundImage" id="previewKsp1Icon" ng-click="openMediaPicker(1)" ng-if="model.editorData.previewKsp1Icon"><img src="{{model.editorData.previewKsp1Icon}}" style="max-width:100%; max-height:150px;" /></div>
+                            <input type="hidden" ng-model="model.editorData.ksp1Icon" name="backgroundImage" />
+
+                            <umb-overlay ng-if="mediaPickerOverlay.show" model="mediaPickerOverlay" position="right" view="mediaPickerOverlay.view"></umb-overlay>
+                        </div>
+                        </umb-control-group>
+                        <div class="row">
+                            <umb-control-group label="KSP 1 Label">
+                                <input type="text"
+                                       class="umb-property-editor umb-textstring"
+                                       ng-model="model.editorData.ksp1Label" />
+                            </umb-control-group>
+
+                            <umb-control-group label="KSP 1 Text">
+                                <input type="text"
+                                       class="umb-property-editor umb-textstring"
+                                       ng-model="model.editorData.ksp1Text" />
+                            </umb-control-group>
+                        </div>
+                        </umb-box-content>
+            </umb-box>
+            <umb-box>
+                <umb-box-header title="KSP 2"></umb-box-header>
+                <umb-box-content>
+                    <div class="row">
+                        <umb-control-group label="KSP 2 Icon">
+                            <div class="previewBackground" id="previewKsp2Icon" ng-click="openMediaPicker(2)" ng-if="!model.editorData.previewKsp2Icon">+</div>
+                            <div class="previewBackgroundImage" id="previewKsp2Icon" ng-click="openMediaPicker(2)" ng-if="model.editorData.previewKsp2Icon"><img src="{{model.editorData.previewKsp2Icon}}" style="max-width:100%; max-height:150px;"  /></div>
+                            <input type="hidden" ng-model="model.editorData.ksp2Icon" name="backgroundImage" />
+
+                            <umb-overlay ng-if="mediaPickerOverlay.show" model="mediaPickerOverlay" position="right" view="mediaPickerOverlay.view"></umb-overlay>
+                        </umb-control-group>
+                        <umb-control-group label="KSP 2 Label">
+                            <input type="text"
+                                   class="umb-property-editor umb-textstring" 
+                                   ng-model="model.editorData.ksp2Label" />
+                        </umb-control-group>
+
+                        <umb-control-group label="KSP 2 Text">
+                            <input type="text"
+                                   class="umb-property-editor umb-textstring" 
+                                   ng-model="model.editorData.ksp2Text" />
+                        </umb-control-group>
+                    </div>
+                </umb-box-content>
+            </umb-box>
+            <umb-box>
+                <umb-box-header title="KSP 3"></umb-box-header>
+                <umb-box-content>
+                    <div class="row">
+                        <umb-control-group label="KSP 3 Icon">
+                            <div class="previewBackground" id="previewKsp3Icon" ng-click="openMediaPicker(3)" ng-if="!model.editorData.previewKsp3Icon">+</div>
+                            <div class="previewBackgroundImage" id="previewKsp3Icon" ng-click="openMediaPicker(3)" ng-if="model.editorData.previewKsp3Icon"><img src="{{model.editorData.previewKsp3Icon}}" style="max-width:100%; max-height:150px;"  /></div>
+                            <input type="hidden" ng-model="model.editorData.ksp3Icon" name="backgroundImage" />
+
+                            <umb-overlay ng-if="mediaPickerOverlay.show" model="mediaPickerOverlay" position="right" view="mediaPickerOverlay.view"></umb-overlay>
+                        </umb-control-group>
+
+                        <umb-control-group label="KSP 3 Label">
+                            <input type="text"
+                                   class="umb-property-editor umb-textstring" 
+                                   ng-model="model.editorData.ksp3Label" />
+                        </umb-control-group>
+
+                        <umb-control-group label="KSP 3 Text">
+                            <input type="text"
+                                   class="umb-property-editor umb-textstring" 
+                                   ng-model="model.editorData.ksp3Text" />
+                        </umb-control-group>
+                    </div>
+                </umb-box-content>
+            </umb-box>
+            <umb-box>
+                <umb-box-header title="KSP 4"></umb-box-header>
+                <umb-box-content>
+                    <div class="row">
+                        <umb-control-group label="KSP 4 Icon" ng-show="!model.editorData.useCountryData">
+                            <div class="previewBackground" id="previewKsp3Icon" ng-click="openMediaPicker(4)" ng-if="!model.editorData.previewKsp4Icon">+</div>
+                            <div class="previewBackgroundImage" id="previewKsp3Icon" ng-click="openMediaPicker(4)" ng-if="model.editorData.previewKsp4Icon"><img src="{{model.editorData.previewKsp4Icon}}" style="max-width:100%; max-height:150px;"  /></div>
+                            <input type="hidden" ng-model="model.editorData.ksp4Icon" name="backgroundImage" />
+
+                            <umb-overlay ng-if="mediaPickerOverlay.show" model="mediaPickerOverlay" position="right" view="mediaPickerOverlay.view"></umb-overlay>
+                        </umb-control-group>
+                        <umb-control-group label="KSP 4 Label">
+                            <input type="text"
+                                   class="umb-property-editor umb-textstring" 
+                                   ng-model="model.editorData.ksp4Label" />
+                        </umb-control-group>
+
+                        <umb-control-group label="KSP 4 Text">
+                            <input type="text"
+                                   class="umb-property-editor umb-textstring" 
+                                   ng-model="model.editorData.ksp4Text" />
+                        </umb-control-group>
+                    </div>
+                </umb-box-content>
+            </umb-box>
+            <umb-box>
+                <umb-box-header title="CSS"></umb-box-header>
+                <umb-box-content>
+                    <umb-control-group label="Css options">
+                        white - white background, black text<br />
+                        transparent - no background, black text<br />
+                        red - for inquiryfinancial, their red color<br />
+                        text-white, text-black - control font color only
+                    </umb-control-group>
+                    <umb-control-group label="Css class">
+                        <input type="text"
+                               class="umb-property-editor umb-textstring"
+                               ng-model="model.editorData.css" />
+                    </umb-control-group>
+                </umb-box-content>
+            </umb-box>
+        </umb-editor-view>
+
+        <umb-editor-footer>
+            <umb-editor-footer-content-right>
+                <div class="umb-el-wrap umb-panel-buttons">
+                    <div class="btn-toolbar umb-btn-toolbar pull-right">
+                        <a href ng-click="close()" class="btn btn-link">
+                            <localize key="general_cancel">Cancel</localize>
+                        </a>
+
+                        <button class="btn btn-primary" ng-click="submit(editorData)">
+                            <localize key="buttons_select">Select</localize>
+                        </button>
+                    </div>
+                </div>
+        </umb-editor-footer>
+    </umb-editor-footer-content-right>
+</div>

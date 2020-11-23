@@ -1,0 +1,100 @@
+﻿.previewBackground {
+    max-height: 100px;
+    max-width: 100px;
+    width: 100%;
+    margin: 10px 0;
+    height: 100px;
+    border: 3px dotted #CCC;
+    line-height: 100px;
+    font-size: 70px;
+    color: #000;
+    text-align: center;
+}
+
+.previewBackgroundImage {
+    max-height: 100px;
+    max-width: 100%;
+    width: 100%;
+    margin: 10px 0;
+    height: 100px;
+    line-height: 100px;
+}
+.ksp {
+    background-color:#00161F;
+}
+.ksp .content-wrapper {
+    padding:0;
+}
+.ksp.white {
+    background-color:#FFF;
+}
+    .ksp.transparent {
+        background-color: initial;
+    }
+    .ksp.red {
+        background-color: initial;
+    }
+    .stack-box {
+    max-width: 1600px;
+    margin: 20px auto;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+.stack-box__image {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: 1s;
+}
+.white .stack-box__image, .transparent .stack-box__image {
+    background-color: rgb(0, 55, 79);
+}
+.ksp.red .stack-box__image {
+    background-color: #ed3123;
+}
+    .scroll-animated {
+    opacity: 0;
+}
+.scroll-zoomed {
+    transform: scale(0);
+}
+.scroll-animated.in-view {
+    opacity: 1;
+    transition: opacity ease-out 1.3s;
+}
+.scroll-zoomed.in-view {
+    transform: scale(1);
+    transition: transform ease-out 0.5s;
+}
+
+.stack-box__text {
+    position: relative;
+    color: #fff;
+    width: 100%;
+    padding: .5rem 0;
+    font-weight: 500;
+    font-size: 12px;
+}
+.stack-box__label {
+    position: relative;
+    color: #fff;
+    width: 100%;
+    padding: 1rem 0 0;
+    font-weight: 700;
+    font-size: 16px;
+}
+.box__text, .stack-box__text * {
+    color: #FFF;
+}
+.white .stack-box__label, .white .stack-box__text {
+    color: #000;
+}
+.transparent .stack-box__label, .transparent .stack-box__text {
+    color: rgb(0, 55, 79);
+}

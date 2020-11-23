@@ -1,0 +1,14 @@
+﻿{
+  "propertyEditors": [
+    {
+      "alias": "kindbergco.SettingsCheckboxList",
+      "name": "Checkbox list",
+      "editor": {
+        "view": "~/App_Plugins/kindbergco.SettingsCheckboxList/editor.html"
+      }
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/kindbergco.SettingsCheckboxList/Controller/controller.js"
+  ]
+}

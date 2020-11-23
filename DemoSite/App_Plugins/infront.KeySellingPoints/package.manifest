@@ -1,0 +1,20 @@
+﻿{
+  "gridEditors": [
+    {
+      "alias": "infront.KeySellingPoints",
+      "name": "Key Selling Points",
+      "icon": "icon-pictures-alt-2",
+      "group": "Peter Kindberg KindbergCo.se",
+      "view": "~/App_Plugins/infront.KeySellingPoints/views/editor/view.html",
+      "render": "~/App_Plugins/infront.KeySellingPoints/views/web/view.cshtml"
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/infront.KeySellingPoints/script/controller.js",
+    "~/App_Plugins/infront.KeySellingPoints/dialogs/editor.controller.js"
+
+  ],
+  "css": [
+    "~/App_Plugins/infront.KeySellingPoints/css/style.css"
+  ]
+}

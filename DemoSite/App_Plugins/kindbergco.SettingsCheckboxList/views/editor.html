@@ -1,0 +1,8 @@
+﻿<div ng-controller="kindbergco.SettingsCheckboxList.icon-select-list.controller">
+    <ul class="list-unstyled select-icon-list">
+        <li ng-repeat="item in items" ng-click="select(item)" ng-class="{'selected': item.selected}">
+            <span ng-show="item.text">{{item.text}}</span>
+            <span ng-show="item.tip" class="tip">({{item.tip}})</span>
+        </li>
+    </ul>
+</div>

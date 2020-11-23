@@ -1,0 +1,60 @@
+﻿<div class="ksp {{control.css}}" ng-controller="infront.KeySellingPoints.Controller" ng-click="openEditor()">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="three columns" ng-show="control.ksp1Label">
+                <div class="stack-box">
+                    <div class="stack-box__image scroll-animated scroll-zoomed in-view" style="background-image: url('{{control.previewKsp1Icon}}'); background-size:contain;"></div>
+                    <div class="stack-box__label">
+                        {{control.ksp1Label}}
+                    </div>
+                    <div class="stack-box__text">
+                        {{control.ksp1Text}}
+                    </div>
+                </div>
+            </div>
+            <div class="three  columns" ng-show="control.ksp2Label">
+                <div class="stack-box">
+                    <div class="stack-box__image scroll-animated scroll-zoomed in-view" style="background-image: url('{{control.previewKsp2Icon}}'); background-size:contain;"></div>
+                    <div class="stack-box__label">
+                        {{control.ksp2Label}}
+
+                    </div>
+                    <div class="stack-box__text">
+                        {{control.ksp2Text}}
+                    </div>
+                </div>
+            </div>
+            <div class="three  columns" ng-show="control.ksp3Label">
+                <div class="stack-box">
+                    <div class="stack-box__image scroll-animated scroll-zoomed in-view" style="background-image: url('{{control.previewKsp3Icon}}'); background-size:contain;"></div>
+                    <div class="stack-box__label">
+                        {{control.ksp3Label}}
+
+                    </div>
+                    <div class="stack-box__text">
+                        {{control.ksp3Text}}
+                    </div>
+                </div>
+            </div>
+            <div class="three  columns" ng-show="control.ksp4Label">
+                <div class="stack-box">
+                    <div class="stack-box__image scroll-animated scroll-zoomed in-view" style="background-image: url('{{control.previewKsp4Icon}}'); background-size:contain;"></div>
+                    <div class="stack-box__label">
+                        {{control.ksp4Label}}
+
+                    </div>
+                    <div class="stack-box__text">
+                        {{control.ksp4Text}}
+                    </div>
+                </div>
+            </div>
+            <div class="three  columns" ng-show="!control.ksp1Label && !control.ksp2Label && !control.ksp3Label && !control.ksp4Label">
+                <div class="stack-box">
+                    <div class="stack-box__label">
+                        Add some items!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
