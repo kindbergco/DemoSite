@@ -1,109 +1,65 @@
-﻿@using Archetype.Models
-@using Umbraco.Web
-@using GoInfrontDev.Core.Common.Helper
+﻿@using Umbraco.Web
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<dynamic>
 @using Umbraco.Web.Templates
 @{
-    if (Model.useCountryData == true)
+    string jsonData = Model.value;
+    if (string.IsNullOrEmpty(jsonData))
     {
-        var geoData = GeoLocationHelper.CurrentLocation;
-        if (geoData != null)
-        {
-            var sellingPoints = UmbracoDataHelper.GetDefaultCountryWithPropertyByCode(geoData.country_code_iso3166alpha2, "sellingPoints", true);
-            var x = 1;
-            Model.ksp1Label = Model.ksp1Text = Model.ksp1Icon = null;
-            Model.ksp2Label = Model.ksp2Text = Model.ksp2Icon = null;
-            Model.ksp3Label = Model.ksp3Text = Model.ksp3Icon = null;
-            Model.ksp4Label = Model.ksp4Text = Model.ksp4Icon = null;
-            foreach (var item in sellingPoints.GetPropertyValue<ArchetypeModel>("sellingPoints"))
-            {
-                try
-                {
-                    var bgImage = Umbraco.TypedMedia(item.GetValue<int>("sellingPointImage")).Url;
-                    var heading = item.GetValue("sellingPointName");
-                    var small = item.GetValue("sellingPointShortText");
-                    switch(x)
-                    {
-                        case 1:
-                            Model.ksp1Label = heading;
-                            Model.ksp1Text = small;
-                            Model.ksp1Icon = bgImage;
-                            break;
-                        case 2:
-                            Model.ksp2Label = heading;
-                            Model.ksp2Text = small;
-                            Model.ksp2Icon = bgImage;
-                            break;
-                        case 3:
-                            Model.ksp3Label = heading;
-                            Model.ksp3Text = small;
-                            Model.ksp3Icon = bgImage;
-                            break;
-                        case 4:
-                            Model.ksp4Label = heading;
-                            Model.ksp4Text = small;
-                            Model.ksp4Icon = bgImage;
-                            break;
-                    }
-                    x++;
-                } catch(Exception) { }
-            }
-
-        }
-    } else
-    {
-        if (Model.previewKsp1Icon != null && !string.IsNullOrEmpty(Model.previewKsp1Icon.Value))
-        {
-            Model.ksp1Icon = Model.previewKsp1Icon.Value;
-        }
-        if (Model.previewKsp2Icon != null && !string.IsNullOrEmpty(Model.previewKsp2Icon.Value))
-        {
-            Model.ksp2Icon = Model.previewKsp2Icon.Value;
-        }
-        if (Model.previewKsp3Icon != null && !string.IsNullOrEmpty(Model.previewKsp3Icon.Value))
-        {
-            Model.ksp3Icon = Model.previewKsp3Icon.Value;
-        }
-        if (Model.previewKsp4Icon != null && !string.IsNullOrEmpty(Model.previewKsp4Icon.Value))
-        {
-            Model.ksp4Icon = Model.previewKsp4Icon.Value;
-        }
-
+        return;
     }
+    var data = Json.Decode(jsonData);
+    
+    if (!string.IsNullOrEmpty(data.previewKsp1Icon))
+    {
+        data.ksp1Icon = data.previewKsp1Icon;
+    }
+    if (!string.IsNullOrEmpty(data.previewKsp2Icon))
+    {
+        data.ksp2Icon = data.previewKsp2Icon;
+    }
+    if (!string.IsNullOrEmpty(data.previewKsp3Icon))
+    {
+        data.ksp3Icon = data.previewKsp3Icon;
+    }
+    if (!string.IsNullOrEmpty(data.previewKsp4Icon))
+    {
+        data.ksp4Icon = data.previewKsp4Icon;
+    }
+
     int numGroups = 0;
-    if (validateGroup((string)Model.ksp1Label, (string)Model.ksp1Text, (string)Model.ksp1Icon))
+    if (validateGroup((string)data.ksp1Label, (string)data.ksp1Text, (string)data.ksp1Icon))
     {
         numGroups++;
     }
-    if (validateGroup((string)Model.ksp2Label, (string)Model.ksp2Text, (string)Model.ksp2Icon))
+    if (validateGroup((string)data.ksp2Label, (string)data.ksp2Text, (string)data.ksp2Icon))
     {
         numGroups++;
     }
-    if (validateGroup((string)Model.ksp3Label, (string)Model.ksp3Text, (string)Model.ksp3Icon))
+    if (validateGroup((string)data.ksp3Label, (string)data.ksp3Text, (string)data.ksp3Icon))
     {
         numGroups++;
     }
-    if (validateGroup((string)Model.ksp4Label, (string)Model.ksp4Text, (string)Model.ksp4Icon))
+    if (validateGroup((string)data.ksp4Label, (string)data.ksp4Text, (string)data.ksp4Icon))
     {
         numGroups++;
     }
-    string css = Model.css;
+    string css = data.css;
     string cssClass = null;
     switch (numGroups)
     {
         case 0:
             return;
         case 1:
-            cssClass = "twelve columns";
+            cssClass = "col-lg-12";
             break;
         case 2:
-            cssClass = "six columns";
+            cssClass = "col-lg-6";
             break;
         case 3:
-            cssClass = "four columns";
+            cssClass = "col-lg-4";
             break;
         case 4:
-            cssClass = "three columns";
+            cssClass = "col-lg-3";
             break;
     }
 
@@ -111,10 +67,10 @@
 <div class="ksp @css">
     <div class="content-wrapper">
         <div class="row">
-            @generateBox((string)Model.ksp1Label, (string)Model.ksp1Text, (string)Model.ksp1Icon, cssClass)
-            @generateBox((string)Model.ksp2Label, (string)Model.ksp2Text, (string)Model.ksp2Icon, cssClass)
-            @generateBox((string)Model.ksp3Label, (string)Model.ksp3Text, (string)Model.ksp3Icon, cssClass)
-            @generateBox((string)Model.ksp4Label, (string)Model.ksp4Text, (string)Model.ksp4Icon, cssClass)
+            @generateBox((string)data.ksp1Label, (string)data.ksp1Text, (string)data.ksp1Icon, cssClass)
+            @generateBox((string)data.ksp2Label, (string)data.ksp2Text, (string)data.ksp2Icon, cssClass)
+            @generateBox((string)data.ksp3Label, (string)data.ksp3Text, (string)data.ksp3Icon, cssClass)
+            @generateBox((string)data.ksp4Label, (string)data.ksp4Text, (string)data.ksp4Icon, cssClass)
         </div>
     </div>
 </div>
@@ -137,7 +93,7 @@
     }
     <div class="@cssClass">
         <div class="stack-box">
-            <div class="stack-box__image scroll-animated scroll-zoomed in-view" style="background-image: url('@(icon)')"></div>
+            <div class="stack-box__image scroll-animated scroll-zoomed in-view" style="background-image: url('@(icon)'); background-size:contain;"></div>
             <div class="stack-box__label">
                 @label
             </div>
